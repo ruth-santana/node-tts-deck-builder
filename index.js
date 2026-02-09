@@ -20,12 +20,15 @@ async function createFile() {
 
     const composites = deck.cards.map(async (card, index) => {
         const [width, height] = [407, 585]
+        const dozens = Math.floor(index / 10)
+        const line = (dozens * 585) + (dozens * 3)
+        const column = ((width * index) + ((index % 10) * 3)) - dozens * 4070
         return {
             input: await sharp(card)
                 .resize(width, height)
                 .toBuffer(),
-            top: 0,
-            left: (width * index) + (index * 3)
+            top: line,
+            left: column
         }
     })
 
