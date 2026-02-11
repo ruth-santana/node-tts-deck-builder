@@ -1,0 +1,15 @@
+{
+  "name": "tts-deck-builder",
+  "version": "1.0.0",
+  "description": "A node.js alternative for Tabletop Simulator Deck Builder for macOS and Linux users",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "@ruth-santana",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "^1.2.8",
+    "sharp": "^0.34.5"
+  }
+}
