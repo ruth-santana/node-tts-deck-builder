@@ -1,5 +1,5 @@
 # node-tts-deck-builder
-A node.js alternative for Tabletop Simulator Deck Builder for those who don't use Windows
+A node.js alternative for Tabletop Simulator Deck Builder for macOS and Linux users
 
 TO DO:
 - [ ] Integrate an electron UI
