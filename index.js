@@ -47,4 +47,6 @@ async function createFile() {
     console.log('file created at ', targetPath)
 }
 
-createFile()
+module.exports = {
+    createFile
+}
