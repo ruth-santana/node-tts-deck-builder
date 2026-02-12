@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    /> -->
+    <title>node-tts-deck-builder</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="generated/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+  </head>
+  <body id="drop-zone">
+    <div class="has-background-black-bis tabs is-centered p-0 m-0" style="position: sticky; top: 0; z-index: 9999;">
+      <ul>
+        <li class="is-active">
+          <a>
+            <span class="icon is-small"
+              ><i class="mdi mdi-cards-playing" aria-hidden="true"></i
+            ></span>
+            <strong class="control">
+              <div class="tags has-addons">
+                <span class="tag is-dark">Deck Builder</span>
+                <span class="tag is-info">Development</span>
+              </div>
+            </strong>
+          </a>
+        </li>
+        <li id="btn-export">
+          <a>
+            <span class="icon is-small"
+              ><i class="mdi mdi-file-export" aria-hidden="true"></i
+            ></span>
+            <strong>Export</strong>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="hero is-fullheight-with-navbar p-5 is-justify-content-flex-start">
+      <article class="message">
+        <div class="message-header">
+          <p>How it works</p>
+        </div>
+        <div class="message-body">
+          Simply <strong>drag and drop</strong> your card images (.png, .jpeg) below. When you're ready, click Export to generate a deck formatted for <strong>Tabletop Simulator</strong>.
+        </div>
+      </article>
+
+      <div class="modal" id="modal-card-image">
+        <div class="modal-background" id="modal-card-bg"></div>
+        <div class="modal-content" style="pointer-events: none;">
+          <figure class="image">
+            <img src="" alt="modal card image preview" id="card-image-preview">
+          </figure>
+        </div>
+      </div>
+
+      <div class="modal" id="drag-and-drop-modal" style="pointer-events: none;">
+        <div class="modal-background" id="modal-card-bg" style="pointer-events: none;"></div>
+        <div class="modal-content" style="pointer-events: none;">
+          <section class="section is-medium has-text-centered">
+            <h1 class="title">
+              Drag & Drop
+            </h1>
+            <h2 class="subtitle">
+              Drop the images anywhere to upload them
+            </h2>
+          </section>
+        </div>
+      </div>
+      
+      <div class="fixed-grid has-8-cols">
+        <div class="grid" id="card-list-grid"></div>
+      </div>
+    </div>
+
+    <script src="./renderer.js" type="module"></script>
+
+    <!-- You can remove the line below -->
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="ruth.santana" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FF6684" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+  </body>
+</html>

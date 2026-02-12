@@ -1,0 +1,38 @@
+// Set your brand colors
+$red: #5E030B;
+$pink: #FF6684;
+
+// Path to Bulma's sass folder
+@use "node_modules/bulma/sass" with (
+  $family-primary: '"Nunito", sans-serif',
+  $primary: $red,
+  $info: $pink,
+  $control-border-width: 2px,
+  $input-shadow: none,
+  $tabs-border-bottom-color: $pink,
+  $tabs-link-hover-border-bottom-color: $pink,
+  $tabs-link-hover-color: $pink,
+  $tabs-link-active-color: $pink,
+  $tabs-link-active-border-bottom-color: $pink
+);
+
+/* Custom CSS to make the modal content wider */
+.modal-content {
+  width: auto;
+}
+
+.modal-content img {
+  width: auto;
+  height: 80vh;
+  display: block;
+  object-fit: contain; 
+}
+
+.card-close-icon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+// Import the Google Font
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
