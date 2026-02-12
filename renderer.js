@@ -1,7 +1,11 @@
 const btn = document.getElementById('butao')
 
 const setLoadingBtn = (loading) => {
-  btn.disabled = loading
+  if (loading) {
+    btn.classList.add('is-skeleton')
+  } else {
+    btn.classList.remove('is-skeleton')
+  }
 }
 
 btn.addEventListener('click', async () => {
@@ -25,4 +29,23 @@ btnModal.addEventListener('click', () => {
 
 modalBg.addEventListener('click', () => {
   modalImg.classList.remove('is-active')
+})
+
+const deckListContainer = document.getElementById('deck-list-container')
+const dragAndDropModal = document.getElementById('drag-and-drop-modal')
+
+deckListContainer.addEventListener('dragenter', () => {
+  dragAndDropModal.classList.add('is-active')
+})
+
+deckListContainer.addEventListener('dragover', () => {
+  dragAndDropModal.classList.add('is-active')
+})
+
+deckListContainer.addEventListener('dragleave', () => {
+  dragAndDropModal.classList.remove('is-active')
+})
+
+deckListContainer.addEventListener('drop', () => {
+  dragAndDropModal.classList.remove('is-active')
 })

@@ -38,13 +38,13 @@
       </ul>
     </div>
 
-    <div class="p-5">
+    <div class="p-5" id="deck-list-container">
       <article class="message">
         <div class="message-header">
-          <p>An error has occurred</p>
+          <p>How it works</p>
         </div>
         <div class="message-body">
-          The app couldn't generate your image. It might be too heavy or has invalid files.
+          Simply <strong>drag and drop</strong> your card images (.png, .jpeg) below. When you're ready, click Export to generate a deck formatted for <strong>Tabletop Simulator</strong>.
         </div>
       </article>
 
@@ -52,8 +52,36 @@
         <div class="modal-background" id="modal-card-bg"></div>
         <div class="modal-content" style="pointer-events: none;">
           <figure class="image">
-            <img src="/Users/ruth/Downloads/07QFYyO.png" alt="">
+            <img src="/Users/ruth/Downloads/M7XJ_PTBR_243-2x.png" alt="">
           </figure>
+        </div>
+      </div>
+
+      <!-- <div class="modal" id="drag-and-drop-modal" style="pointer-events: none;">
+        <div class="modal-background" id="modal-card-bg"></div>
+        <div class="modal-content">
+          <section class="section is-medium">
+            <h1 class="title">Looks good!</h1>
+            <h2 class="subtitle">
+              Now just drop the images here to upload them.
+            </h2>
+          </section>
+        </div>
+      </div> -->
+      
+      <div class="fixed-grid has-8-cols">
+        <div class="grid">
+          <div class="cell">
+            <figure class="image">
+              <img src="/Users/ruth/Downloads/M7XJ_PTBR_243-2x.png" alt="" draggable="false">
+            </figure>
+             <span class="icon is-small is-medium has-text-danger"
+              ><i class="mdi mdi-delete" aria-hidden="true"></i
+            ></span>
+            <span class="icon is-small is-medium"
+              ><i class="mdi mdi-dots-vertical" aria-hidden="true"></i
+            ></span>
+          </div>
         </div>
       </div>
 
