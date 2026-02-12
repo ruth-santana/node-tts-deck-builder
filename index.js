@@ -1,13 +1,6 @@
-// Width and height should be calculated automatically. 
-// If you insert 10 cards it should be 10x1, if you insert 70 it should be 10x7. 
-// If you insert 160 cards, it should be 10x7 (1), 10x7 (2), 10x2 (3).
-// The last card must be the hidden card
-
 const sharp = require("sharp");
 
-async function createFile(cards, folder) {
-    const targetPath = `${folder}/deck.png`
-
+async function buildImageAndSave(cards, path) {
     const composites = cards.map(async (card, index) => {
         const [width, height] = [407, 585]
         const dozens = Math.floor(index / 10)
@@ -32,7 +25,16 @@ async function createFile(cards, folder) {
     })
     .composite(await Promise.all(composites))
     .png()
-    .toFile(targetPath)
+    .toFile(path)
+}
+
+async function createFile(cards, folder) {
+    const totalPages = Math.ceil(cards.length / 70)
+
+    for (let page = 1; page <= totalPages; page++) {
+        const cardsPage = cards.slice((page - 1) * 70, page * 70)
+        await buildImageAndSave(cardsPage, `${folder}-${page}-${totalPages}.png`)
+    }
 }
 
 module.exports = {

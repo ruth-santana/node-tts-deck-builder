@@ -19,9 +19,15 @@ const createWindow = () => {
 
 ipcMain.handle('create-file', async (event, cards) => {
     try {
-        const folder = (await dialog.showOpenDialog({
-            properties: ['openDirectory', 'createDirectory']
-        }))?.filePaths[0] ?? 'generated'
+        const options = {
+            title: 'Create/Save a File',
+            defaultPath: path.join(app.getPath('downloads'), 'unnamed-deck'),
+            buttonLabel: 'Save',
+            filters: [
+                { extensions: ['png'] }
+            ]
+        };
+        const folder = (await dialog.showSaveDialog(BrowserWindow.getFocusedWindow(), options))?.filePath
         await createFile(cards, folder)
         return { success: true, message: 'file created' }
     } catch (err) {
