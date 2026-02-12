@@ -17,12 +17,12 @@ const createWindow = () => {
     win.show()
 }
 
-ipcMain.handle('create-file', async () => {
+ipcMain.handle('create-file', async (event, cards) => {
     try {
-        await createFile()
-        await dialog.showOpenDialog({
+        const folder = (await dialog.showOpenDialog({
             properties: ['openDirectory', 'createDirectory']
-        })
+        }))?.filePaths[0] ?? 'generated'
+        await createFile(cards, folder)
         return { success: true, message: 'file created' }
     } catch (err) {
         throw new Error('Failed to create file', err)

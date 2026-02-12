@@ -16,29 +16,34 @@
     <link rel="stylesheet" href="generated/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
   </head>
-  <body>
-    <div class="tabs is-centered p-0 m-0">
+  <body id="drop-zone">
+    <div class="has-background-black-bis tabs is-centered p-0 m-0" style="position: sticky; top: 0; z-index: 9999;">
       <ul>
         <li class="is-active">
           <a>
             <span class="icon is-small"
               ><i class="mdi mdi-cards-playing" aria-hidden="true"></i
             ></span>
-            <strong>Deck Builder</strong>
+            <strong class="control">
+              <div class="tags has-addons">
+                <span class="tag is-dark">Deck Builder</span>
+                <span class="tag is-info">Development</span>
+              </div>
+            </strong>
           </a>
         </li>
-         <li>
+        <li id="btn-export">
           <a>
             <span class="icon is-small"
-              ><i class="mdi mdi-cog" aria-hidden="true"></i
+              ><i class="mdi mdi-file-export" aria-hidden="true"></i
             ></span>
-            <strong>Settings</strong>
+            <strong>Export</strong>
           </a>
         </li>
       </ul>
     </div>
 
-    <div class="p-5" id="deck-list-container">
+    <div class="hero is-fullheight-with-navbar p-5 is-justify-content-flex-start">
       <article class="message">
         <div class="message-header">
           <p>How it works</p>
@@ -52,43 +57,28 @@
         <div class="modal-background" id="modal-card-bg"></div>
         <div class="modal-content" style="pointer-events: none;">
           <figure class="image">
-            <img src="/Users/ruth/Downloads/M7XJ_PTBR_243-2x.png" alt="">
+            <img src="" alt="modal card image preview" id="card-image-preview">
           </figure>
         </div>
       </div>
 
-      <!-- <div class="modal" id="drag-and-drop-modal" style="pointer-events: none;">
-        <div class="modal-background" id="modal-card-bg"></div>
-        <div class="modal-content">
-          <section class="section is-medium">
-            <h1 class="title">Looks good!</h1>
+      <div class="modal" id="drag-and-drop-modal" style="pointer-events: none;">
+        <div class="modal-background" id="modal-card-bg" style="pointer-events: none;"></div>
+        <div class="modal-content" style="pointer-events: none;">
+          <section class="section is-medium has-text-centered">
+            <h1 class="title">
+              Drag & Drop
+            </h1>
             <h2 class="subtitle">
-              Now just drop the images here to upload them.
+              Drop the images anywhere to upload them
             </h2>
           </section>
         </div>
-      </div> -->
+      </div>
       
       <div class="fixed-grid has-8-cols">
-        <div class="grid">
-          <div class="cell">
-            <figure class="image">
-              <img src="/Users/ruth/Downloads/M7XJ_PTBR_243-2x.png" alt="" draggable="false">
-            </figure>
-             <span class="icon is-small is-medium has-text-danger"
-              ><i class="mdi mdi-delete" aria-hidden="true"></i
-            ></span>
-            <span class="icon is-small is-medium"
-              ><i class="mdi mdi-dots-vertical" aria-hidden="true"></i
-            ></span>
-          </div>
-        </div>
+        <div class="grid" id="card-list-grid"></div>
       </div>
-
-      <button class="button is-primary" aria-label="close" id="btn-card-image">abrir modal</button>
-
-      <h1>texto aqui</h1>
-      <button id="butao" class="button is-primary">clique aqui</button>
     </div>
 
     <script src="./renderer.js" type="module"></script>

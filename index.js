@@ -3,25 +3,15 @@
 // If you insert 160 cards, it should be 10x7 (1), 10x7 (2), 10x2 (3).
 // The last card must be the hidden card
 
-const fs = require('fs')
 const sharp = require("sharp");
-const args = require('minimist')(process.argv.slice(2));
 
-const deckFromPath = args.deck ?? './deck-template.json'
-const deck = require(deckFromPath)
+async function createFile(cards, folder) {
+    const targetPath = `${folder}/deck.png`
 
-// Use toBuffer later to save image in a user chosen folder or documents
-// function getDocumentsFolder() {
-//     return path.join(os.homedir(), 'Documents')
-// }
-
-async function createFile() {
-    const targetPath = `generated/${deck.name}.png`
-
-    const composites = deck.cards.map(async (card, index) => {
+    const composites = cards.map(async (card, index) => {
         const [width, height] = [407, 585]
         const dozens = Math.floor(index / 10)
-        const line = (dozens * 585) + (dozens * 3)
+        const line = (dozens * height) + (dozens * 3)
         const column = ((width * index) + ((index % 10) * 3)) - dozens * 4070
         return {
             input: await sharp(card)
@@ -43,8 +33,6 @@ async function createFile() {
     .composite(await Promise.all(composites))
     .png()
     .toFile(targetPath)
-
-    console.log('file created at ', targetPath)
 }
 
 module.exports = {
